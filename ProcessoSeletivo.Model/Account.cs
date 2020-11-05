@@ -14,7 +14,7 @@
 
         public bool Withdraw(double value)
         {
-            if (Balance > value)
+            if (Balance >= value)
             {
                 Balance -= value;
                 return true;

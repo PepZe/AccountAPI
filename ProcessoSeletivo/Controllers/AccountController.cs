@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProcessoSeletivo.Business.Handler;
 using ProcessoSeletivo.Model;
-using ProcessoSeletivo.Model.Enum;
 using ProcessoSeletivo.Model.Interface;
 using ProcessoSeletivo.Model.Operator;
 
@@ -16,22 +13,21 @@ namespace ProcessoSeletivo.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private static IDao<Account> _dao;
-
+        private static EndpointHandler endpointHandler;
         public AccountController(IDao<Account> dao)
         {
-            if (_dao != null)
+            if (endpointHandler != null)
             {
                 return;
             }
-            _dao = dao;
+            endpointHandler = new EndpointHandler(dao);
         }
 
         [Route("Balance")]
         [HttpGet]
         public ActionResult<double> GetBalance(int account_id)
         {
-            var account = _dao.Search(account_id);
+            var account = endpointHandler.GetAccount(account_id);
 
             if (account != null)
             {
@@ -44,53 +40,19 @@ namespace ProcessoSeletivo.Controllers
 
         [Route("Reset")]
         [HttpPost]
-        public IActionResult PostReset()
+        public string PostReset()
         {
-            return Ok();
+            endpointHandler = null;
+            return "Ok";
         }
 
         [Route("Event")]
         [HttpPost]
         public IActionResult PostAccountEvent([FromBody] AccountOperator account)
         {
-            return EventsHandler(account);
-        }
-
-        public IActionResult EventsHandler(AccountOperator account)
-        {
-            var operation = Enum.Parse(typeof(TypesOperation), account.Type);
-            Account destination, origin;
             try
             {
-                switch (operation)
-                {
-                    case TypesOperation.withdraw:
-                        origin = _dao.Search(int.Parse(account.Origin));
-                        origin.Withdraw(account.Amount);
-
-                        return CreatedAtAction(nameof(PostAccountEvent), new { origin });
-
-                    case TypesOperation.deposit:
-                        destination = _dao.Search(int.Parse(account.Destination));
-                        if (destination == null)
-                        {
-                            destination = new Account(int.Parse(account.Destination), 0);
-                            _dao.Include(destination);
-                        }
-
-                        destination.Deposit(account.Amount);
-                        return CreatedAtAction(nameof(PostAccountEvent), new { destination });
-
-                    case TypesOperation.transfer:
-                        origin = _dao.Search(int.Parse(account.Origin));
-                        destination = _dao.Search(int.Parse(account.Destination));
-
-                        origin.Transfer(destination, account.Amount);
-                        return CreatedAtAction(nameof(PostAccountEvent), new { origin, destination });
-
-                    default:
-                        return NotFound();
-                }
+                return CreatedAtAction(nameof(PostAccountEvent), endpointHandler.EventsHandler(account));
             }
             catch (Exception)
             {

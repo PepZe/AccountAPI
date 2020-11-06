@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using ProcessoSeletivo.Business.Handler;
 using ProcessoSeletivo.Model;
@@ -40,10 +42,10 @@ namespace ProcessoSeletivo.Controllers
 
         [Route("Reset")]
         [HttpPost]
-        public string PostReset()
+        public IActionResult PostReset()
         {
             endpointHandler = null;
-            return "Ok";
+            return Ok();
         }
 
         [Route("Event")]
@@ -52,7 +54,7 @@ namespace ProcessoSeletivo.Controllers
         {
             try
             {
-                return CreatedAtAction(nameof(PostAccountEvent), endpointHandler.EventsHandler(account));
+                return Created(nameof(PostAccountEvent), endpointHandler.EventsHandler(account));
             }
             catch (Exception)
             {

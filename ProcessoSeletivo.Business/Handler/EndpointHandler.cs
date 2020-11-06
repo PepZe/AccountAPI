@@ -29,7 +29,7 @@ namespace ProcessoSeletivo.Business.Handler
                         origin = GetAccount(int.Parse(account.Origin));
                         Withdraw(origin, account.Amount);
 
-                        return new { origin };
+                        return new { origin = new { id = account.Origin, balance = origin.Balance} };
 
                     case TypesOperation.deposit:
                         destination = GetAccount(int.Parse(account.Destination));
@@ -40,7 +40,7 @@ namespace ProcessoSeletivo.Business.Handler
 
                         Deposit(destination, account.Amount);
 
-                        return new { destination };
+                        return new { destination = new { id = account.Destination, balance = destination.Balance} };
 
                     case TypesOperation.transfer:
                         origin = GetAccount(int.Parse(account.Origin));
@@ -51,7 +51,8 @@ namespace ProcessoSeletivo.Business.Handler
                         }
 
                         Transfer(origin, destination, account.Amount);
-                        return new { origin, destination };
+                        return new { origin = new { id = account.Origin, balance = origin.Balance },
+                            destination = new { id = account.Destination, balance = destination.Balance } };
 
                     default:
                         return null;

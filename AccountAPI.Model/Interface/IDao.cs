@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProcessoSeletivo.Model.Interface
+namespace AccountAPI.Model.Interface
 {
     public interface IDao<T>
     {

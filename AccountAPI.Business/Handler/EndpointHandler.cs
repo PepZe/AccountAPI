@@ -1,12 +1,12 @@
-﻿using ProcessoSeletivo.Model;
-using ProcessoSeletivo.Model.Enum;
-using ProcessoSeletivo.Model.Interface;
-using ProcessoSeletivo.Model.Operator;
+﻿using AccountAPI.Model;
+using AccountAPI.Model.Enum;
+using AccountAPI.Model.Interface;
+using AccountAPI.Model.Operator;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProcessoSeletivo.Business.Handler
+namespace AccountAPI.Business.Handler
 {
     public class EndpointHandler
     {

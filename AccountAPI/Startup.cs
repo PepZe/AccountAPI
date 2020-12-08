@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProcessoSeletivo.Infrastructure;
-using ProcessoSeletivo.Model;
-using ProcessoSeletivo.Model.Interface;
+using AccountAPI.Infrastructure;
+using AccountAPI.Model;
+using AccountAPI.Model.Interface;
 
-namespace ProcessoSeletivo
+namespace AccountAPI
 {
     public class Startup
     {

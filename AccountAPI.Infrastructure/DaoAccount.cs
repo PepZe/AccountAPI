@@ -1,9 +1,9 @@
-﻿using ProcessoSeletivo.Model;
-using ProcessoSeletivo.Model.Interface;
+﻿using AccountAPI.Model;
+using AccountAPI.Model.Interface;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProcessoSeletivo.Infrastructure
+namespace AccountAPI.Infrastructure
 {
     public class DaoAccount : IDao<Account>
     {

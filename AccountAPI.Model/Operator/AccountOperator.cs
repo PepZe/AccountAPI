@@ -1,6 +1,6 @@
-﻿using ProcessoSeletivo.Model.Enum;
+﻿using AccountAPI.Model.Enum;
 
-namespace ProcessoSeletivo.Model.Operator
+namespace AccountAPI.Model.Operator
 {
     public class AccountOperator
     {

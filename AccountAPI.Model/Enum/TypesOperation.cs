@@ -1,4 +1,4 @@
-﻿namespace ProcessoSeletivo.Model.Enum
+﻿namespace AccountAPI.Model.Enum
 {
     public enum TypesOperation
     {

@@ -1,4 +1,4 @@
-﻿namespace ProcessoSeletivo.Model
+﻿namespace AccountAPI.Model
 {
     public class Account
     {

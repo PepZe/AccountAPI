@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountAPI.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountAPI.Model", "..\AccountAPI.Model\AccountAPI.Model.csproj", "{446E6EAE-360C-488F-9A52-4579115E62CC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{17267FDC-E856-49A0-9244-777F2C03064E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountAPI.Tests", "..\AccountAPI.Tests\AccountAPI.Tests.csproj", "{446486C6-ED5A-490D-A509-C7992A64F526}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,16 @@ Global
 		{446E6EAE-360C-488F-9A52-4579115E62CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{446E6EAE-360C-488F-9A52-4579115E62CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{446E6EAE-360C-488F-9A52-4579115E62CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{446486C6-ED5A-490D-A509-C7992A64F526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{446486C6-ED5A-490D-A509-C7992A64F526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{446486C6-ED5A-490D-A509-C7992A64F526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{446486C6-ED5A-490D-A509-C7992A64F526}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{446486C6-ED5A-490D-A509-C7992A64F526} = {17267FDC-E856-49A0-9244-777F2C03064E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4D269C1-024D-4564-89E3-DEFA8DAC4DD6}

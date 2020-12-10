@@ -35,7 +35,7 @@ namespace AccountAPI.Controllers
             {
                 return account.Balance;
             }
-
+            
             return NotFound(0);
         }
 

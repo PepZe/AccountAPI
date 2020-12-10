@@ -13,11 +13,12 @@ namespace AccountAPI.Tests
     class AccountControllerTest
     {
         private AccountController _accountController;
-
+        private Mock<IDao<Account>> mockDao;
         [SetUp]
         public void SetUp()
         {
-            _accountController = new AccountController(new DaoAccount());
+            mockDao = new Mock<IDao<Account>>();
+            _accountController = new AccountController(mockDao.Object);
         }
 
         [Test]
@@ -40,12 +41,7 @@ namespace AccountAPI.Tests
         {
             //Arrange
             var account = new Account(1, 300);
-            var mockDao = new Mock<IDao<Account>>();
             mockDao.Setup(_ => _.Search(account.Id)).Returns(account);
-
-            // Set endpointHandler to null.
-            _accountController.PostReset();
-            _accountController = new AccountController(mockDao.Object);
 
             //Act
             var act = _accountController.GetBalance(account.Id);
@@ -74,6 +70,30 @@ namespace AccountAPI.Tests
             //Assert
             var status = act as ObjectResult;
             Assert.That(status.StatusCode, Is.EqualTo(404));
+        }
+
+        [Test]
+        [TestCase("1", "2", "transfer", 100)]
+        public void PostAccountEvent_ShouldReturnCreated(string origin, string destination, string type, int amount)
+        {
+            //Arrange
+            var account = new Account(1, 300);
+            var accountOperator = new AccountOperator()
+            {
+                Amount = amount,
+                Origin = origin,
+                Destination = destination,
+                Type = type
+            };
+            mockDao.Setup(_ => _.Search(account.Id)).Returns(account);
+
+            //Act
+            var act = _accountController.PostAccountEvent(accountOperator) as ActionResult;
+
+            //Assert
+            var status = act as ObjectResult;
+
+            Assert.That(status.StatusCode, Is.EqualTo(201));
         }
     }
 }

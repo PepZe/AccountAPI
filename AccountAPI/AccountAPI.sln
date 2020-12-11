@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountAPI.Model", "..\Acco
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{17267FDC-E856-49A0-9244-777F2C03064E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountAPI.Tests", "..\AccountAPI.Tests\AccountAPI.Tests.csproj", "{446486C6-ED5A-490D-A509-C7992A64F526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountAPI.Tests", "..\AccountAPI.Tests\AccountAPI.Tests.csproj", "{446486C6-ED5A-490D-A509-C7992A64F526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountAPI.Business.Tests", "..\AccountAPI.Business.Tests\AccountAPI.Business.Tests.csproj", "{23C77C6D-E31B-4243-90B9-94B0B2E79259}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +43,17 @@ Global
 		{446486C6-ED5A-490D-A509-C7992A64F526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{446486C6-ED5A-490D-A509-C7992A64F526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{446486C6-ED5A-490D-A509-C7992A64F526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C77C6D-E31B-4243-90B9-94B0B2E79259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C77C6D-E31B-4243-90B9-94B0B2E79259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C77C6D-E31B-4243-90B9-94B0B2E79259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C77C6D-E31B-4243-90B9-94B0B2E79259}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{446486C6-ED5A-490D-A509-C7992A64F526} = {17267FDC-E856-49A0-9244-777F2C03064E}
+		{23C77C6D-E31B-4243-90B9-94B0B2E79259} = {17267FDC-E856-49A0-9244-777F2C03064E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4D269C1-024D-4564-89E3-DEFA8DAC4DD6}
